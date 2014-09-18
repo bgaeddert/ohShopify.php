@@ -16,6 +16,10 @@ Basic needs for authorization and redirecting
 ```php
 <?php
 
+	define('SHOPIFY_API_KEY' , 'Paste your API key here');
+	define('SHOPIFY_SECRET' , 'Paste your Credentials secret');
+	define('SHOPIFY_SCOPE' , 'Enter Scope here....write_products,read_products,write_themes,read_themes');
+
 	require 'shopify.php';
 	if (isset($_GET['code'])) { // if the code param has been sent to this page... we are in Step 2
 		// Step 2: do a form POST to get the access token
