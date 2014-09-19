@@ -60,8 +60,7 @@ class ShopifyClient {
 		$payload = in_array($method, array('POST','PUT')) ? stripslashes(json_encode($params)) : array();
 		$request_headers = in_array($method, array('POST','PUT')) ? array("Content-Type: application/json; charset=utf-8", 'Expect:') : array();
 
-		// add auth headers
-		$request_headers[] = 'X-Shopify-Access-Token: ' . $this->token;
+		$request_headers[] = "Authorization: Basic " . base64_encode("{$this->api_key}:{$this->secret}"). "\r\n" . 'X-Shopify-Access-Token: ' . $this->token;
 
 		$response = $this->curlHttpApiRequest($method, $url, $query, $payload, $request_headers);
 		$response = json_decode($response, true);
